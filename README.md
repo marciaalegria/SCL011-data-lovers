@@ -113,9 +113,9 @@ En este link se muestra testeo de usuarios :
 
 ***
 
-nuestro producto final cumple con los requerimientos de usuarios..
+nuestro producto final cumple con los requerimientos de usuarios, con excepción del detalle responsive que debemos arreglar. A continuación video test usabilidad:
 
 ***
 
-
+[video](#https://www.youtu.be/nxMHO0O83As)
 
