@@ -1,159 +1,69 @@
- 
-const lolData= Object.values(LOL.data);
-window.lolData = lolData;
-
-
-  const container= document.getElementById("root");
-
-  const mostPower= (data, getAttack)=>{
+//data global
+const dataLOL= Object.values(window.LOL);
+window.dataLOL = dataLOL;
+//función para botón más poderosos
+const mostPower= (dataLOL)=>{
+  //creando array vacio 
   let powered=[];
-
-  data.reverse();
-
-  let newPowered=[];
-
-  for (let i = 0; i < data.length; i++) {
-    if (data[i]["info"][getAttack] == 10) {
-
-     newPowered.push(
-       [
-          [data[i].img],
-          [data[i].id],
-          [data[i]["info"].attack]
-       ]
-     );
-    }
+  //recorriendo la data
+  for(let i =0; i<dataLOL.length; i++){
+      //creando variable que almacena la info de data
+      let getAttack = dataLOL[i]["info"];
+      //creando variable que almacena ataque
+      let ataques = getAttack.attack;
+      //damos la condicionalida que ataque sea igual a 10
+      if(ataques === 10){
+        //acá decimos que suba los ataques igual a 10 que encontró en el recorrido
+        //a nuestro array vacío
+          powered.push(dataLOL[i]);
+      }
+      
+      
   }
-
-  
-  let element= document.getElementById("order").value
-  if (element == "z-a"){
-    newPowered.reverse();
-      root.innerHTML += `
-        <div>
-        <div class="flip-card">
-        <div class="flip-card-front>
-            <div id="img${[i]}">
-            <img class="imagen" src="${lolData[i].splash}">
-            </div>
-            <div id="name${[i]}">
-                <p>nombre:${data[i].id}</p>
-            </div> 
-            <div id="attack${[i]}">
-          
-        </div> 
-        </div>`;
-    };
-
-  }
-
-
-for (let i = 0; i < newPowered.length; i++) {
-  
-  root.innerHTML += `
-  <div>
-      <div id="img${[i]}">
-          <img src="${newPowered[i][0]}">
-      </div
-      <div id="name${[i]}">
-          <p>nombre:${newPowered[i][1]}</p>
-      </div> 
-      <div id="attack${[i]}">
-      <p>Nivel Ataque:${newPowered[i][2]}</p>
-  </div> 
-  </div>`;
-
-
-}
-
+  //que retorne este array con los más poderosos
   return powered;
 };
-  const tags= (data, getFighter)=>{
-    let fighter=[];
-    for (let i = 0; i < data.length; i++){
-      if (data[i]["tags"][getFighter]= "Fighter"){
-        root.innerHTML += `
-        <div>
-        <div class="flip-card">
-        <div class="flip-card-front>
-          <div id="img${[i]}">
-          <img class="imagen" src="${lolData[i].splash}">
-          </div>
-          <div id="name${[i]}">
-            <p>nombre:${data[i].id}</p>
-          </div> 
-          <div id="tags${[i]}">
-            <p>tipo:${data[i].tags}</p>
-          </div>
-        </div>`;
-      };
-    };
-    return fighter;
+//mostpower global
+window.mostPower = mostPower;
+//función para filtrar por tipos en el select
+//se crea una constante con los parametros dataLOL y que trabajará 
+//con el valor seleccionado por el usuario
+const filterTags= (dataLOL,selectValue) =>{
+  //se crea variable que filtrará la data buscando el elemento que se indica
+  //este elemento será el valor seleccionado y le diremos que lo incluya
+  let result = dataLOL.filter(Element => {
+    return Element.tags.includes(selectValue);
+  });
+  //pedimos que retorne esta variable 
+  return result;
+
+};
+//filterTags global
+window.filterTags= filterTags;
+
+//función para ordenar de la a a la z
+//fijamos los dos parámetros: la data y selectSort
+const sortAZ= (dataLOL,selectSort) =>{
+  //creamos variable vacia para ordenar de la a a la z
+  let sortAZ="";
+  //damos la condicionalidad que si el usuario selecciona de la a a la z
+  if(selectSort=== "az"){
+    //sort az tendra dos parametros a y b
+    sortAZ = dataLOL.sort((a,b)=>{
+      //nos retornará el id ordenando de la a a la z con el metodo localecompare
+      return a.id.localeCompare(b.id)
+    })
+    //si el usuario no selecciona "az" se ejecutará lo contrario
+    //que sería de la z a la a
+  }else {
+    sortAZ=dataLOL.sort((a,b)=>{
+      return b.id.localeCompare(a.id)
+    })
+  }
+  //retornará la variable con los elementos ordenados según el usuario seleccionó
+  return sortAZ;
+}
+// sortAZ global
+window.sortAZ= sortAZ;
+
   
-  };
-
-  const stats=(data,)=>{
-    let information=[];
-    for (let i = 0; i < data.length; i++) {
-      
-        root.innerHTML +=`
-        <div>
-        <div class="flip-card">
-        <div class="flip-card-front>
-          <div id="img${[i]}">
-          <img class="imagen" src="${lolData[i].splash}">
-          </div>
-          <div id="name${[i]}">
-          <p>${data[i].id}</p>
-          </div> 
-          <div id="stats${[i]}">
-            <p>Nivel de vida:${data[i]["stats"].hp}</p>
-          </div>
-          <div id="stats${[i]}">
-            <p>Máximo nivel:${data[i]["stats"].hpperlevel}</p>
-          </div>
-          <div id="stats${[i]}">
-            <p>velocidad:${data[i]["stats"].movespeed}</p>
-          </div>
-          <div id="stats${[i]}">
-            <p>armadura:${data[i]["stats"].armor}</p>
-          </div>
-          <div id="stats${[i]}">
-            <p>Bloqueo de Hechizos:${data[i]["stats"].spellblock}</p>
-          </div>
-          <div id="stats${[i]}">
-            <p>Rango de Ataque:${data[i]["stats"].attackrange}</p>
-          </div>
-          <div id="stats${[i]}">
-            <p>Daño de Ataque:${data[i]["stats"].attackdamage}</p>
-          </div>
-          
-        </div>`;
-      };
-      return information;
-    }
-
-    
-    const sortData = (lolData, sortBy, sortOrder) => {
-
-      let lolOrder = lolData;
-      if (sortOrder == "a-z"){
-        lolOrder.sort((a,b)=> {
-          if (a[sortBy] < b[sortBy]) {return -1;}
-          if (a[sortBy] > b[sortBy]) {return  1;}
-          return 0;
-        })
-      }
-    
-      if (sortOrder == "z-a"){
-        lolOrder.sort((a,b)=>{
-          if (a[sortBy] > b[sortBy]) {return -1;}
-          if (a[sortBy] < b[sortBy]) {return  1;}
-          return 0;
-        })
-      
-      }
-      return lolOrder;
-    };
-    
-  console.log(lolData.sort());
