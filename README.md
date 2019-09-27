@@ -117,5 +117,5 @@ nuestro producto final cumple con los requerimientos de usuarios, con excepción
 
 ***
 
-[video](#https://www.youtu.be/nxMHO0O83As)
+https://www.youtu.be/nxMHO0O83As
 
