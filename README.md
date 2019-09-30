@@ -117,7 +117,7 @@ nuestro producto final cumple con los requerimientos de usuarios, con excepción
 
 ***
 
-[test usuario](https://youtu.be/nxMHO0O83As)
+[ver video](https://youtu.be/nxMHO0O83As)
 
 * evaluación Heurística:  
 En la escala de gravedad tenemos un problema de baja importancia, que es el detalle responsive al seleccionar campeones se pierde la imagne de fondo reemplazando por color gris que no afecta la búsqueda ni las card mostradas.

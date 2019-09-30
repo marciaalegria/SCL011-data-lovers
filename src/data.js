@@ -18,7 +18,6 @@ const mostPower= (dataLOL)=>{
           powered.push(dataLOL[i]);
       }
       
-      
   }
   //que retorne este array con los más poderosos
   return powered;
